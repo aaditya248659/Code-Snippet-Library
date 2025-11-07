@@ -1,4 +1,4 @@
-const logger = require('../config/logger');
+// Use console for logging to avoid dependency on external logger module
 
 // 404 handler
 function notFound(req, res, next) {
@@ -11,7 +11,7 @@ function errorHandler(err, req, res, next) { // eslint-disable-line no-unused-va
   const statusCode = res.statusCode && res.statusCode !== 200 ? res.statusCode : 500;
   res.status(statusCode);
 
-  logger.error(err instanceof Error ? err.stack || err.message : err);
+  console.error(err instanceof Error ? err.stack || err.message : err);
 
   res.json({
     message: err.message || 'Internal Server Error',

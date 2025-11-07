@@ -4,7 +4,6 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
-const logger = require('./config/logger');
 const { errorHandler, notFound } = require('./middleware/errorHandler');
 
 // Load env vars
@@ -32,9 +31,10 @@ app.use(helmet({
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 } else {
+  // In production, write morgan output to console
   app.use(morgan('combined', {
     stream: {
-      write: (message) => logger.info(message.trim())
+      write: (message) => console.log(message.trim())
     }
   }));
 }
@@ -96,18 +96,17 @@ const PORT = process.env.PORT || 5000;
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
-  logger.error('Unhandled Promise Rejection:', err);
+  console.error('Unhandled Promise Rejection:', err);
   // Close server & exit process
-  server.close(() => process.exit(1));
+  try { server.close(() => process.exit(1)); } catch (e) { process.exit(1); }
 });
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (err) => {
-  logger.error('Uncaught Exception:', err);
+  console.error('Uncaught Exception:', err);
   process.exit(1);
 });
 
 const server = app.listen(PORT, () => {
-  logger.info(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
   console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
 });
