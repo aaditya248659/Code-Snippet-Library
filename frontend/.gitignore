@@ -1,0 +1,70 @@
+# ===============================
+# 📦 Node.js / Express Project
+# ===============================
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build and output directories
+dist/
+build/
+out/
+tmp/
+temp/
+
+# Environment files
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage reports
+coverage/
+*.lcov
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# VS Code files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Editor and system-specific
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Package lock files (optional — uncomment if you want to ignore them)
+# package-lock.json
+# yarn.lock
+
+# Local databases or caches
+*.sqlite
+*.db
+.cache/
+.nyc_output/
+*.tgz
+
+# Git backup / merge conflict files
+*.orig
+
+# ===============================
+# ✅ End of .gitignore
+# ===============================
