@@ -45,7 +45,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // CORS middleware with configuration
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'https://code-snippet-lib.netlify.app/',
+  origin: process.env.FRONTEND_URL || 'https://code-snippet-lib.netlify.app',
   credentials: true,
   optionsSuccessStatus: 200
 };
